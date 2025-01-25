@@ -177,4 +177,7 @@ class UserController extends Controller
         }
         return redirect()->route('painel')->with(['message' => 'Acesso negado.']);
     }
+
+
+    
 }
