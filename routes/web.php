@@ -5,12 +5,22 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PainelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\ViewDataController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
+
+
+Route::prefix('painel')->name('painel.')->group(function () {
+    Route::post('{admin}/functions/app-name', [ViewDataController::class, 'updateAppName'])->name('functions.appname');
+    Route::get('{admin}/functions', [ViewDataController::class, 'index'])->name('functions.index');
+    Route::get('{admin}/functions/edit/{id}', [ViewDataController::class, 'edit'])->name('functions.edit');
+    Route::delete('{admin}/functions/delete/{id}', [ViewDataController::class, 'delete'])->name('functions.delete');
+    Route::post('{admin}/functions/store', [ViewDataController::class, 'store'])->name('functions.store');
+});
 
 Route::get('/painel', [PainelController::class, 'painel'])->name('painel');
 Route::post('/painel/login', [PainelController::class, 'login'])->name('painel.login');
