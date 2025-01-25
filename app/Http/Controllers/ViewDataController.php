@@ -60,7 +60,7 @@ class ViewDataController extends Controller
             $request->validate([
                 'type' => 'required|string',
                 'content' => 'required|string',
-                'link' => 'nullable|url',
+                'link' => 'nullable|string',
                 'min' => 'nullable|integer',
                 'max' => 'nullable|integer',
             ]);

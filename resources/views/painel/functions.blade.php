@@ -55,9 +55,9 @@
 
                 <input type="text" name="content" value="{{ $editViewData->content ?? '' }}" placeholder="Content" class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" required>
     
-                <input id="linkField" type="text" name="link" value="{{ $editViewData->link ?? '' }}" placeholder="Enter link" class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5 hidden" required>
+                <input id="linkField" type="text" name="link" value="{{ $editViewData->link ?? '' }}" placeholder="Enter link" class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5 hidden" >
   
-                <div id="rangeFields" class="flex space-x-2 mt-2">
+                <div id="rangeFields" class="flex space-x-2 mt-2 hidden">
                     <input type="number" name="min" value="{{ $editViewData->min ?? 0 }}" class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5">
                     <input type="number" name="max" value="{{ $editViewData->max ?? 100 }}" class="rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5">
                 </div>
@@ -134,13 +134,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             const typeSelect = document.getElementById('typeSelect');
             const linkField = document.getElementById('linkField');
+            const rangeFields = document.getElementById('rangeFields');
     
             const toggleLinkField = () => {
                 if (typeSelect.value === 'BUTTON') {
                     linkField.classList.remove('hidden');
-                    
                 } else {
                     linkField.classList.add('hidden');
+                }
+                if (typeSelect.value === 'SEEKBAR') {
+                    rangeFields.classList.remove('hidden');  // Exibe o campo range
+                } else {
+                    rangeFields.classList.add('hidden');  // Esconde o campo range
                 }
                 linkField.value = 'https://'
             };
