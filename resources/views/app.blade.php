@@ -19,7 +19,7 @@
     </main>
 
     <footer class="w-full flex justify-center">
-        <p>ByJMZ</p>
+        <p>ByJoao</p>
     </footer>
 </body>
 </html>
